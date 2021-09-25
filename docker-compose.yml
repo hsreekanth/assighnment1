@@ -5,19 +5,19 @@ services:
     image: rest-app
     restart: on-failure
     container_name: nodejsserver
-     hostname: nodejsserver
+    hostname: nodejsserver
     build:
       context: ./app
       dockerfile: Dockerfile
     depends_on:
       - mongo    
-    mongo:
-        container_name: mongo
-        image: mongo
-        volumes:
-            - ./data:/data/db
-        ports:
-            - "27017:27017" 
+  mongo:
+    image: mongo
+    container_name: mongo
+    volumes:
+       - ./data:/data/db
+    ports:
+       - "27017:27017" 
        
   nginx:
     image:nginx
